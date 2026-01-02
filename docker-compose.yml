@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Telegram Bot Backend
+  bot:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: opencode-bot
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - ALLOWED_USER_ID=${ALLOWED_USER_ID}
+      - MINI_APP_URL=http://frontend:80
+      - WORKING_DIR=/home/willydilly47
+      - DISPLAY=:0
+      - LOG_LEVEL=INFO
+    volumes:
+      - /home/willydilly47/.opencode:/app/.opencode
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    depends_on:
+      - frontend
+    networks:
+      - opencode-network
+
+  # Mini App Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: opencode-frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    networks:
+      - opencode-network
+
+networks:
+  opencode-network:
+    driver: bridge

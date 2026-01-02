@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # Development bot with live code reloading
+  bot:
+    volumes:
+      - ./backend:/app
+      - /home/willydilly47/.opencode:/app/.opencode
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /run/user/1000:/run/user/1000
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - ALLOWED_USER_ID=${ALLOWED_USER_ID}
+      - MINI_APP_URL=http://localhost:8080
+      - WORKING_DIR=/home/willydilly47
+      - DISPLAY=${DISPLAY}
+      - LOG_LEVEL=DEBUG
+    ports:
+      - "8000:8000"
+
+  # Development frontend with live reloading
+  frontend:
+    volumes:
+      - ./mini-app:/usr/share/nginx/html
+    ports:
+      - "8080:80"
