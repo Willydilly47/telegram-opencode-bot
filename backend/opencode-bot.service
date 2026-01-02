@@ -1,0 +1,45 @@
+[Unit]
+Description=Telegram OpenCode Bot
+Documentation=https://github.com/Willydilly47/telegram-opencode-bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=willydilly47
+Group=willydilly47
+
+# Working directory
+WorkingDirectory=/home/willydilly47/telegram-opencode-bot/backend
+
+# Environment variables
+Environment="PATH=/home/willydilly47/.local/bin:/usr/bin:/bin"
+Environment="DISPLAY=:0"
+Environment="PYTHONUNBUFFERED=1"
+Environment="LOG_LEVEL=INFO"
+
+# Python executable with virtual environment (use python3 symlink)
+ExecStart=/home/willydilly47/telegram-opencode-bot/backend/venv/bin/python3 /home/willydilly47/telegram-opencode-bot/backend/bot_listener.py
+
+# Restart policy
+Restart=always
+RestartSec=10
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/home/willydilly47/.opencode
+
+# Resource limits
+MemoryMax=100M
+CPUQuota=50%
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=opencode-bot
+
+[Install]
+WantedBy=multi-user.target

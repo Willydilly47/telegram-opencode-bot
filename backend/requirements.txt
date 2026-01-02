@@ -1,0 +1,51 @@
+# Telegram OpenCode Bot - Python Dependencies
+# Version: 1.0.0
+# Generated: January 2, 2026
+
+# Core Dependencies
+# -----------------------------------------------------------------------------
+
+# Telegram Bot API wrapper
+# Required for handling Telegram updates and sending messages
+python-telegram-bot>=21.0
+
+# Environment variable management
+# Loads configuration from .env file for sensitive data
+python-dotenv>=1.0.0
+
+# Testing Dependencies (optional but recommended)
+# -----------------------------------------------------------------------------
+
+# Unit testing framework
+pytest>=7.0.0
+
+# Mocking library for tests
+pytest-asyncio>=0.21.0
+
+# HTTP requests for integration testing
+requests>=2.31.0
+
+# Development Dependencies (optional)
+# -----------------------------------------------------------------------------
+
+# Code formatting
+black>=23.0.0
+
+# Linting
+flake8>=6.0.0
+
+# Type checking
+mypy>=1.0.0
+
+# Security scanning
+bandit>=1.7.0
+
+# Installation Instructions
+# -----------------------------------------------------------------------------
+# pip3 install -r requirements.txt
+#
+# For development with testing:
+# pip3 install -r requirements.txt pytest pytest-asyncio requests
+#
+# For development with linting:
+# pip3 install -r requirements.txt black flake8 mypy bandit

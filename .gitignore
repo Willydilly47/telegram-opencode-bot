@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+venv/
+*.egg-info/
+dist/
+build/
+*.pyc
+
+# Environment
+.env
+.env*
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# OpenCode specific
+.antigravity/
+.opencode/
+
+# Backup files
+*.bak
+*.tmp
+*~
